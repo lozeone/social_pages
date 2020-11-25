@@ -18,7 +18,8 @@ Supports the following networks which are commonly used on the sites I maintain.
 - Flickr
 - Snapchat
 
-Supports themeing the links with FontAwesome icons but FontAwesoome needs to be included in your theme manually. This module does not add the FontAwesome library.
+Supports themeing the links with FontAwesome icons but that needs to be included in your theme manually. This module does not add the FontAwesome library.
+You can still use the other formatters without FA.
 
 It's a little rough around the edges but it works well for my use cases.
 
