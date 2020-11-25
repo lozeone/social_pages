@@ -1,7 +1,7 @@
 # socal_pages (Drupal 8 module)
 
 
-This module provides a field type wiget and formatter that can be attached to entities (probably user profiles) for users to add links to their social media accounts.
+This module provides a field type wiget and formatter that can be attached to entities (usually user profiles) for users to add links to their social media accounts.
 
 I find the UI on this much easier for users compared to other social media modules in contrib such as https://www.drupal.org/project/social_link_field
 
