@@ -99,7 +99,6 @@ class SocialPagesFormatter extends FormatterBase {
     $enabled = array_filter($enabled);
 
     $mode = $this->getSetting('mode');
-    //dsm($mode);
 
     $info = _social_pages_field_defintions();
 
@@ -118,16 +117,7 @@ class SocialPagesFormatter extends FormatterBase {
          }
       }
     }
-    //$url = social_pages_cleanup_url($i['url']);
-   // $url_parts = _social_pages_parse_url($url);
-
-
-
     return $output;
-
-    // The text value has no text format assigned to it, so the user input
-    // should equal the output, including newlines.
-    //return nl2br(Html::escape($item->value));
   }
 
 }
