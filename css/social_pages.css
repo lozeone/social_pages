@@ -1,0 +1,9 @@
+.social-page-link{
+  display: inline-block;
+}
+.social-page-link a{
+  color: #888;
+}
+.social-page-link a:hover{
+  color: #000;
+}

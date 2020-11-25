@@ -1,0 +1,5 @@
+name: 'Social Pages'
+type: module
+description: 'Field for adding social media links to entities'
+core_version_requirement: ^8 || ^9
+package: 'ILG'

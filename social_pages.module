@@ -1,0 +1,244 @@
+<?php
+
+/**
+ * @file
+ * Contains social_pages.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function social_pages_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the social_pages module.
+    case 'help.page.social_pages':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Field for adding social media links to entities') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+function social_pages_field_options(){
+  foreach(_social_pages_field_defintions() as $key => $item){
+    $options[$key] = $item['title'];
+  }
+  return $options;
+}
+
+
+function _social_pages_field_defintions(){
+  return array(
+    'facebook' => array(
+      'title' => 'Facebook',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Full facebook url',
+      'description' => NULL,
+      'type' => 'url',
+      'pattern' => '!^(http://|https://)?(www\.)?facebook\.com/[a-zA-Z0-9]+!',
+      'render_pattern' => '!value',
+      'icon' => '<i class="fab fa-facebook fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'text',
+        //'length' => 2048,
+        'not null' => FALSE,
+      ),
+    ),
+
+    'twitter' => array(
+      'title' => 'Twitter',
+      'prefix' => '@',
+      'suffix' => NULL,
+      'placeholder' => 'Twitter username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://twitter.com/!value',
+      'icon' => '<i class="fab fa-twitter fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'text',
+        //'length' => 2048,
+        'not null' => FALSE,
+      ),
+    ),
+
+    'instagram' => array(
+      'title' => 'Instagram',
+      'prefix' => '@',
+      'suffix' => NULL,
+      'placeholder' => 'Instagram username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_\.]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://instagram.com/!value',
+      'icon' => '<i class="fab fa-instagram fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+
+    'pinterest' => array(
+      'title' => 'Pinterest',
+      'prefix' => '@',
+      'suffix' => NULL,
+      'placeholder' => 'Pinterest username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://www.pinterset.com/!value',
+      'icon' => '<i class="fab fa-pinterest fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+
+/*    'google' => array(
+      'title' => 'Google +',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Full Google+ URL',
+      'description' => NULL,
+      'type' => 'url',
+      'pattern' => '!^(http://|https://)?plus.google\.com/[+a-zA-Z0-9]+!',
+      'render_pattern' => '!value',
+      'icon' => '<i class="fab fa-google-plus fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'text',
+        //'length' => 2048,
+        'not null' => FALSE,
+      ),
+    ),*/
+
+    'linkedin' => array(
+      'title' => 'Linked In',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Full LinkedIn URL',
+      'description' => NULL,
+      'type' => 'url',
+      'pattern' => '!^(http://|https://)?(www\.)?linkedin\.com/[a-zA-Z0-9]+!',
+      'render_pattern' => '!value',
+      'icon' => '<i class="fab fa-linkedin fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'text',
+        //'length' => 2048,
+        'not null' => FALSE,
+      ),
+    ),
+
+    'flickr' => array(
+      'title' => 'Flickr',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Full Flickr URL',
+      'description' => NULL,
+      'type' => 'url',
+      'pattern' => '!^(http://|https://)?(www\.)?flickr\.com/[a-zA-Z0-9]+!',
+      'render_pattern' => '!value',
+      'icon' => '<i class="fab fa-flickr fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+
+
+    'youtube' => array(
+      'title' => 'YouTube',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'YouTube Channel URL',
+      'description' => NULL,
+      'type' => 'url',
+      'pattern' => '!^(http://|https://)?(www\.)?youtube\.com/[a-zA-Z0-9]+!',
+      //'!^(http://|https://)?(www\.)?youtube\.com/(user|channel|c|u)/[a-zA-Z0-9]+!',
+      'render_pattern' => '!value',
+      'icon' => '<i class="fab fa-youtube fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'text',
+        //'length' => 2048,
+        'not null' => FALSE,
+      ),
+    ),
+
+/*    'youtube' => array(
+      'title' => 'YouTube',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Youtube username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://youtube.com/user/!value',
+    ),*/
+
+
+
+    'vimeo' => array(
+      'title' => 'Vimeo',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Vimeo username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://vimeo.com/!value',
+      'icon' => '<i class="fab fa-vimeo fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+    'fpx' => array(
+      'title' => '500px',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => '500px username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_-]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://500px.com/!value',
+      'icon' => '<i class="fab fa-500px fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+    'snapchat' => array(
+      'title' => 'Snapchat',
+      'prefix' => NULL,
+      'suffix' => NULL,
+      'placeholder' => 'Snapchat username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[\.A-Za-z0-9_-]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://snapchat.com/add/!value',
+      'icon' => '<i class="fab fa-snapchat fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+  );
+}
