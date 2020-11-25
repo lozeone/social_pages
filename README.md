@@ -23,3 +23,8 @@ You can still use the other formatters without FA.
 
 It's a little rough around the edges but it works well for my use cases.
 
+# Usage
+- Install it like any other module
+- Add a "social_pages" field to your entity
+- Choose the enabled networks you want the user to be able to edit in the form settings
+- Choose the enabled networks you want to show up on the front end in the fields display formatter
