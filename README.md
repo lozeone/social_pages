@@ -23,3 +23,5 @@ Supports the following networks which are commonly used on the sites I maintain.
 
 Supports themeing the links with FontAwesome icons but FontAwesoome needs to be included in your theme manually. This module does not add the FontAwesome library.
 
+It's a little rough around the edges but it works well for my use cases.
+
