@@ -1,4 +1,4 @@
-# socal_pages (Drupal 8 module)
+# social_pages (Drupal 8 module)
 
 
 This module provides a field type wiget and formatter that can be attached to entities (usually user profiles) for users to add links to their social media accounts.
