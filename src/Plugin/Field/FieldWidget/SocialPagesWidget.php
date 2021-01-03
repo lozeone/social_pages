@@ -5,6 +5,8 @@ namespace Drupal\social_pages\Plugin\Field\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\Validator\ConstraintViolationInterface;
+use Drupal\Component\Utility\NestedArray;
 
 /**
  * Plugin implementation of the 'social_pages_widget' widget.
@@ -72,7 +74,6 @@ class SocialPagesWidget extends WidgetBase {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
 
-
     $enabled = $this->getSetting('enabled_networks');
 
     $element['#type'] = 'fieldset';
@@ -91,6 +92,18 @@ class SocialPagesWidget extends WidgetBase {
     }
 
     return $element;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function errorElement(array $element, ConstraintViolationInterface $error, array $form, FormStateInterface $form_state) {
+    // Return the sub element field the failed validation.
+    if (!empty($error->arrayPropertyPath) && $sub_element = NestedArray::getValue($element, $error->arrayPropertyPath)) {
+      return $sub_element;
+    } else {
+      return $element;
+    }
   }
 
 }

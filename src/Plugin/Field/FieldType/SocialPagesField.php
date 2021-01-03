@@ -78,13 +78,8 @@ class SocialPagesField extends FieldItemBase {
 
         $message = $this->t('Invalid value.');
 
-        if ($item['type'] == 'url') {
-          $label = isset($item['type_label']) ? $item['type_label'] : 'URL';
-          $message = $this->t('The value provided for %field is not a valid %label.', array('%field' => $item['title'], '%label' => $label));
-        } else if ($item == 'url') {
-          $label = isset($item['type_label']) ? $item['type_label'] : 'username';
-          $message = $this->t('%field is not a valid %label.', array('%field' => $item['title'], '%label' => $label));
-        }
+        $label = isset($item['type_label']) ? $item['type_label'] : 'URL';
+        $message = $this->t('The value provided for %field is not a valid %label.', array('%field' => $item['title'], '%label' => $label));
 
         $field_constraints[$key] = [
           'Regex' => [

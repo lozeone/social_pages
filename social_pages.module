@@ -23,17 +23,32 @@ function social_pages_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
-
-function social_pages_field_options(){
-  foreach(_social_pages_field_defintions() as $key => $item){
+function social_pages_field_options() {
+  foreach (_social_pages_field_defintions() as $key => $item) {
     $options[$key] = $item['title'];
   }
   return $options;
 }
 
-
-function _social_pages_field_defintions(){
+function _social_pages_field_defintions() {
   return array(
+    'instagram' => array(
+      'title' => 'Instagram',
+      'prefix' => '@',
+      'suffix' => NULL,
+      'placeholder' => 'Instagram username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_\.]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://instagram.com/!value',
+      'icon' => '<i class="fab fa-instagram fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
     'facebook' => array(
       'title' => 'Facebook',
       'prefix' => NULL,
@@ -68,60 +83,6 @@ function _social_pages_field_defintions(){
         'not null' => FALSE,
       ),
     ),
-
-    'instagram' => array(
-      'title' => 'Instagram',
-      'prefix' => '@',
-      'suffix' => NULL,
-      'placeholder' => 'Instagram username',
-      'description' => NULL,
-      'type' => 'string',
-      'pattern' => '/^[A-Za-z0-9_\.]+$/',
-      'type_label' => 'username',
-      'render_pattern' => 'https://instagram.com/!value',
-      'icon' => '<i class="fab fa-instagram fa-lg fa-fw"></i>',
-      'field' => array(
-        'type' => 'varchar',
-        'length' => 70,
-        'not null' => FALSE,
-      ),
-    ),
-
-    'pinterest' => array(
-      'title' => 'Pinterest',
-      'prefix' => '@',
-      'suffix' => NULL,
-      'placeholder' => 'Pinterest username',
-      'description' => NULL,
-      'type' => 'string',
-      'pattern' => '/^[A-Za-z0-9_]+$/',
-      'type_label' => 'username',
-      'render_pattern' => 'https://www.pinterset.com/!value',
-      'icon' => '<i class="fab fa-pinterest fa-lg fa-fw"></i>',
-      'field' => array(
-        'type' => 'varchar',
-        'length' => 70,
-        'not null' => FALSE,
-      ),
-    ),
-
-/*    'google' => array(
-      'title' => 'Google +',
-      'prefix' => NULL,
-      'suffix' => NULL,
-      'placeholder' => 'Full Google+ URL',
-      'description' => NULL,
-      'type' => 'url',
-      'pattern' => '!^(http://|https://)?plus.google\.com/[+a-zA-Z0-9]+!',
-      'render_pattern' => '!value',
-      'icon' => '<i class="fab fa-google-plus fa-lg fa-fw"></i>',
-      'field' => array(
-        'type' => 'text',
-        //'length' => 2048,
-        'not null' => FALSE,
-      ),
-    ),*/
-
     'linkedin' => array(
       'title' => 'Linked In',
       'prefix' => NULL,
@@ -156,7 +117,6 @@ function _social_pages_field_defintions(){
       ),
     ),
 
-
     'youtube' => array(
       'title' => 'YouTube',
       'prefix' => NULL,
@@ -176,18 +136,16 @@ function _social_pages_field_defintions(){
     ),
 
 /*    'youtube' => array(
-      'title' => 'YouTube',
-      'prefix' => NULL,
-      'suffix' => NULL,
-      'placeholder' => 'Youtube username',
-      'description' => NULL,
-      'type' => 'string',
-      'pattern' => '/^[A-Za-z0-9_]+$/',
-      'type_label' => 'username',
-      'render_pattern' => 'https://youtube.com/user/!value',
-    ),*/
-
-
+'title' => 'YouTube',
+'prefix' => NULL,
+'suffix' => NULL,
+'placeholder' => 'Youtube username',
+'description' => NULL,
+'type' => 'string',
+'pattern' => '/^[A-Za-z0-9_]+$/',
+'type_label' => 'username',
+'render_pattern' => 'https://youtube.com/user/!value',
+),*/
 
     'vimeo' => array(
       'title' => 'Vimeo',
@@ -240,5 +198,23 @@ function _social_pages_field_defintions(){
         'not null' => FALSE,
       ),
     ),
+    'pinterest' => array(
+      'title' => 'Pinterest',
+      'prefix' => '@',
+      'suffix' => NULL,
+      'placeholder' => 'Pinterest username',
+      'description' => NULL,
+      'type' => 'string',
+      'pattern' => '/^[A-Za-z0-9_]+$/',
+      'type_label' => 'username',
+      'render_pattern' => 'https://www.pinterset.com/!value',
+      'icon' => '<i class="fab fa-pinterest fa-lg fa-fw"></i>',
+      'field' => array(
+        'type' => 'varchar',
+        'length' => 70,
+        'not null' => FALSE,
+      ),
+    ),
+
   );
 }
