@@ -1,5 +1,6 @@
-# socal_pages (Drupal 8/9 module)
+# social_pages (Drupal 8/9 module)
 
+#Add links to popular social media accounts for drupal user and profile entities.
 
 This module provides a field type wiget and formatter that can be attached to entities (usually user profiles) for users to add links to their social media accounts.
 
