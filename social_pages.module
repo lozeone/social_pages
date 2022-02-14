@@ -146,6 +146,7 @@ function _social_pages_field_defintions() {
       'type_label' => 'username',
       'render_pattern' => 'https://vimeo.com/!value',
       'icon' => 'vimeo',
+      'field' => [
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
