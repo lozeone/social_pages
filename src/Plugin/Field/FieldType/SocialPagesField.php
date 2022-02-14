@@ -92,7 +92,6 @@ class SocialPagesField extends FieldItemBase {
     }
 
     $constraints[] = $constraint_manager->create('ComplexData', $field_constraints);
-
     return $constraints;
   }
 
@@ -101,22 +100,6 @@ class SocialPagesField extends FieldItemBase {
    */
   public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
     $elements = [];
-
-    /*foreach(_social_pages_field_defintions() as $key => $item){
-    $options[$key] = $item['title'];
-    }
-
-    $settings = $this->getSettings();
-
-    $elements['enabled_networks'] = [
-    '#type' => 'checkboxes',
-    '#title' => t('Enabled Networks'),
-    '#options' => $options,
-    '#default_value' => $settings['enabled_networks'],
-    '#description' => t('Choose all the networds to enable for this field.'),
-    '#disabled' => $has_data,
-    ];*/
-
     return $elements;
   }
 

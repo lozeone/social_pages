@@ -1,0 +1,7 @@
+<span{{ attributes }}>
+{% if link %}
+  <a href="{{ url }}" title="{{ title }}" target="_blank">{{ content }}</a>
+{% else %}
+  {{ content }}
+{% endif %}
+</span>

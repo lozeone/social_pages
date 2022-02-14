@@ -3,6 +3,10 @@
 /**
  * @file
  * Contains social_pages.module.
+ *
+ * @todo
+ * - Make ordering the networks draggable?
+ * - Allow adding your own networks?
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -31,8 +35,8 @@ function social_pages_field_options() {
 }
 
 function _social_pages_field_defintions() {
-  return array(
-    'instagram' => array(
+  return [
+    'instagram' => [
       'title' => 'Instagram',
       'prefix' => '@',
       'suffix' => NULL,
@@ -42,14 +46,14 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[A-Za-z0-9_\.]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://instagram.com/!value',
-      'icon' => '<i class="fab fa-instagram fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'instagram',
+      'field' => [
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
-      ),
-    ),
-    'facebook' => array(
+      ],
+    ],
+    'facebook' => [
       'title' => 'Facebook',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -58,15 +62,14 @@ function _social_pages_field_defintions() {
       'type' => 'url',
       'pattern' => '!^(http://|https://)?(www\.)?facebook\.com/[a-zA-Z0-9]+!',
       'render_pattern' => '!value',
-      'icon' => '<i class="fab fa-facebook fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'facebook',
+      'field' => [
         'type' => 'text',
         //'length' => 2048,
         'not null' => FALSE,
-      ),
-    ),
-
-    'twitter' => array(
+      ],
+    ],
+    'twitter' => [
       'title' => 'Twitter',
       'prefix' => '@',
       'suffix' => NULL,
@@ -76,14 +79,14 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[A-Za-z0-9_]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://twitter.com/!value',
-      'icon' => '<i class="fab fa-twitter fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'twitter',
+      'field' => [
         'type' => 'text',
         //'length' => 2048,
         'not null' => FALSE,
-      ),
-    ),
-    'linkedin' => array(
+      ],
+    ],
+    'linkedin' => [
       'title' => 'Linked In',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -92,15 +95,14 @@ function _social_pages_field_defintions() {
       'type' => 'url',
       'pattern' => '!^(http://|https://)?(www\.)?linkedin\.com/[a-zA-Z0-9]+!',
       'render_pattern' => '!value',
-      'icon' => '<i class="fab fa-linkedin fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'linkedin',
+      'field' => [
         'type' => 'text',
         //'length' => 2048,
         'not null' => FALSE,
-      ),
-    ),
-
-    'flickr' => array(
+      ],
+    ],
+    'flickr' => [
       'title' => 'Flickr',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -109,15 +111,14 @@ function _social_pages_field_defintions() {
       'type' => 'url',
       'pattern' => '!^(http://|https://)?(www\.)?flickr\.com/[a-zA-Z0-9]+!',
       'render_pattern' => '!value',
-      'icon' => '<i class="fab fa-flickr fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'flickr',
+      'field' => [
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
-      ),
-    ),
-
-    'youtube' => array(
+      ],
+    ],
+    'youtube' => [
       'title' => 'YouTube',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -127,27 +128,14 @@ function _social_pages_field_defintions() {
       'pattern' => '!^(http://|https://)?(www\.)?youtube\.com/[a-zA-Z0-9]+!',
       //'!^(http://|https://)?(www\.)?youtube\.com/(user|channel|c|u)/[a-zA-Z0-9]+!',
       'render_pattern' => '!value',
-      'icon' => '<i class="fab fa-youtube fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'youtube',
+      'field' => [
         'type' => 'text',
         //'length' => 2048,
         'not null' => FALSE,
-      ),
-    ),
-
-/*    'youtube' => array(
-'title' => 'YouTube',
-'prefix' => NULL,
-'suffix' => NULL,
-'placeholder' => 'Youtube username',
-'description' => NULL,
-'type' => 'string',
-'pattern' => '/^[A-Za-z0-9_]+$/',
-'type_label' => 'username',
-'render_pattern' => 'https://youtube.com/user/!value',
-),*/
-
-    'vimeo' => array(
+      ],
+    ],
+    'vimeo' => [
       'title' => 'Vimeo',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -157,14 +145,13 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[A-Za-z0-9_]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://vimeo.com/!value',
-      'icon' => '<i class="fab fa-vimeo fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'vimeo',
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
-      ),
-    ),
-    'fpx' => array(
+      ],
+    ],
+    'fpx' => [
       'title' => '500px',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -174,14 +161,14 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[A-Za-z0-9_-]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://500px.com/!value',
-      'icon' => '<i class="fab fa-500px fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => '500px',
+      'field' => [
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
-      ),
-    ),
-    'snapchat' => array(
+      ],
+    ],
+    'snapchat' => [
       'title' => 'Snapchat',
       'prefix' => NULL,
       'suffix' => NULL,
@@ -191,14 +178,14 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[\.A-Za-z0-9_-]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://snapchat.com/add/!value',
-      'icon' => '<i class="fab fa-snapchat fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'snapchat',
+      'field' => [
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
-      ),
-    ),
-    'pinterest' => array(
+      ],
+    ],
+    'pinterest' => [
       'title' => 'Pinterest',
       'prefix' => '@',
       'suffix' => NULL,
@@ -208,13 +195,63 @@ function _social_pages_field_defintions() {
       'pattern' => '/^[A-Za-z0-9_]+$/',
       'type_label' => 'username',
       'render_pattern' => 'https://www.pinterset.com/!value',
-      'icon' => '<i class="fab fa-pinterest fa-lg fa-fw"></i>',
-      'field' => array(
+      'icon' => 'pinterest',
+      'field' => [
         'type' => 'varchar',
         'length' => 70,
         'not null' => FALSE,
-      ),
-    ),
+      ],
+    ],
+  ];
 
-  );
+}
+/**
+ * Implementing hook_theme().
+ */
+function social_pages_theme($existing, $type, $theme, $path) {
+  return [
+    'social_pages_network' => [
+      'variables' => [
+        'info' => [],
+        'id' => NULL,
+        'url' => NULL,
+        'icon' => NULL,
+        'value' => NULL,
+        'title' => NULL,
+        'display' => [],
+        'link' => TRUE,
+        'content' => [],
+      ],
+    ],
+  ];
+}
+
+function template_preprocess_social_pages_network(&$vars) {
+  $vars['attributes']['class'][] = $vars['id'];
+  $vars['attributes']['class'][] = 'social-page-link';
+  $vars['content'] = [];
+  foreach ($vars['display'] as $el) {
+    switch ($el) {
+      case 'icons':
+        $vars['content']['icon'] = [
+          '#theme' => 'svg_icon',
+          '#style' => 'brands',
+          '#name' => $vars['info']['icon'],
+          '#attributes' => ['class' => ['social-icon', 'fw']],
+        ];
+        break;
+      case 'title':
+        $vars['content']['title']['#markup'] = t('Follow on @network', ['@network' => $vars['title']]);
+        break;
+      case 'url':
+        $vars['content']['url']['#markup'] = $vars['url'];
+        break;
+      case 'handle':
+        $parts = explode('/', $vars['value']);
+        $handle = array_pop($parts);
+        $handle = '@' . trim($handle, '@');
+        $vars['content']['handle']['#markup'] = $handle;
+        break;
+    }
+  }
 }
